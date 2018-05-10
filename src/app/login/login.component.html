@@ -1,4 +1,28 @@
-<nav>
-  <a routerLink="/user" routerLinkActive="active">User</a>
-  <a routerLink="/admin" routerLinkActive="active">Admin</a>
-</nav>
+<mat-card>
+  <mat-accordion>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>person</mat-icon>
+        </mat-panel-title>
+        <mat-panel-description>
+          Login as User
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <button mat-raised-button routerLink="/user">Continue as guest</button>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>computer</mat-icon>
+        </mat-panel-title>
+        <mat-panel-description>Login as Admin
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <button mat-raised-button routerLink="/user">Continue as guest</button>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+</mat-card>

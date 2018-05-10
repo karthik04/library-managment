@@ -10,7 +10,8 @@ import { environment } from '../environments/environment';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCardModule} from '@angular/material/card';
 
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
@@ -32,7 +33,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     MatTabsModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatExpansionModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
