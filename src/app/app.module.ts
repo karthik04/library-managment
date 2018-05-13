@@ -22,6 +22,7 @@ import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { BooksDataComponent } from './admin/books-data/books-data.component';
+import {BookService} from './service/book.service';
 
 @NgModule({
   declarations: [
