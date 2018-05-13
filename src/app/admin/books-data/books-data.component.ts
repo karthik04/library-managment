@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTableDataSource, MatSort } from '@angular/material';
 
 @Component({
   selector: 'app-books-data',
@@ -7,14 +7,16 @@ import { MatTableDataSource } from '@angular/material';
   styleUrls: ['./books-data.component.scss']
 })
 export class BooksDataComponent implements OnInit {
+  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor() { }
 
   ngOnInit() {
+    this.dataSource.sort = this.sort;
   }
-
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace

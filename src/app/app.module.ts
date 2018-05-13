@@ -15,6 +15,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatSortModule} from '@angular/material/sort';
 
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
@@ -43,7 +44,8 @@ import { BooksDataComponent } from './admin/books-data/books-data.component';
     MatCardModule,
     MatTableModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
