@@ -12,11 +12,15 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCardModule} from '@angular/material/card';
+import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { BooksDataComponent } from './admin/books-data/books-data.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AdminComponent,
     UserComponent,
     LoginComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    BooksDataComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MatIconModule,
     MatButtonModule,
     MatExpansionModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
