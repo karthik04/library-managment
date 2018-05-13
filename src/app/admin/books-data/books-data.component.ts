@@ -8,11 +8,31 @@ import { MatTableDataSource, MatSort } from '@angular/material';
 })
 export class BooksDataComponent implements OnInit {
   displayedColumns = ['isbn', 'name', 'quantity', 'author'];
-  dataSource = new MatTableDataSource(BOOKS_DATA);
+  dataSource;
 
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() { }
+  constructor() {
+    let BOOKS_DATA: Book[];
+
+    if (localStorage.getItem("bo")) {
+      BOOKS_DATA = JSON.parse(localStorage.getItem("bo"));
+    } else {
+      // Initial data
+      BOOKS_DATA = [
+        { isbn: 1, name: 'Hydrogen', quantity: 9, author: 'H' },
+        { isbn: 2, name: 'Helium', quantity: 6, author: 'He' },
+        { isbn: 3, name: 'Lithium', quantity: 2, author: 'Li' },
+        { isbn: 4, name: 'Beryllium', quantity: 2, author: 'Be' },
+        { isbn: 5, name: 'Boron', quantity: 1, author: 'B' },
+        { isbn: 6, name: 'Carbon', quantity: 17, author: 'C' }
+      ];
+      localStorage.setItem("bo", JSON.stringify(BOOKS_DATA));
+      console.log("data storage else block");
+    }
+
+    this.dataSource = new MatTableDataSource(BOOKS_DATA);
+  }
 
   ngOnInit() {
     this.dataSource.sort = this.sort;
@@ -27,18 +47,11 @@ export class BooksDataComponent implements OnInit {
 
 
 
-export interface Element {
+export interface Book {
   name: string;
   isbn: number;
   quantity: number;
   author: string;
 }
 
-const BOOKS_DATA: Element[] = [
-  { isbn: 1, name: 'Hydrogen', quantity: 9, author: 'H' },
-  { isbn: 2, name: 'Helium', quantity: 6, author: 'He' },
-  { isbn: 3, name: 'Lithium', quantity: 2, author: 'Li' },
-  { isbn: 4, name: 'Beryllium', quantity: 2, author: 'Be' },
-  { isbn: 5, name: 'Boron', quantity: 1, author: 'B' },
-  { isbn: 6, name: 'Carbon', quantity: 17, author: 'C' }
-];
+
