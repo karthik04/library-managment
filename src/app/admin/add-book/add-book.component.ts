@@ -1,0 +1,21 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-add-book',
+  templateUrl: './add-book.component.html',
+  styleUrls: ['./add-book.component.scss']
+})
+export class AddBookComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+  submitBook(form) {
+    console.log(form.value);
+    alert("The form was submitted");
+    form.reset();
+  }
+
+}

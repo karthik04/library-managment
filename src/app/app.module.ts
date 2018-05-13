@@ -23,6 +23,9 @@ import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { BooksDataComponent } from './admin/books-data/books-data.component';
 import {BookService} from './service/book.service';
+import { AddBookComponent } from './admin/add-book/add-book.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'; 
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import {BookService} from './service/book.service';
     UserComponent,
     LoginComponent,
     PageNotFoundComponent,
-    BooksDataComponent
+    BooksDataComponent,
+    AddBookComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,9 @@ import {BookService} from './service/book.service';
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSortModule
+    MatSortModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
