@@ -1,6 +1,16 @@
-Add book
-<form #bookForm="ngForm" (ngSubmit)="submitBook(bookForm.form);">
-  <input type="text" class="form-control" name="book-name" ngModel #nameField="ngModel">
-  <button class="btn btn-primary" [disabled]="!bookForm.valid">Submit</button>
+<form #bookForm="ngForm" (ngSubmit)="submitBook(bookForm.form);" class="book-form">
+  <mat-form-field class="book-full-width">
+    <input type="text" matInput placeholder="ISBN" name="isbn" ngModel #isbnField="ngModel">
+  </mat-form-field>
+  <mat-form-field class="book-full-width">
+    <input type="text" matInput placeholder="Name" name="name" ngModel #nameField="ngModel">
+  </mat-form-field>
+  <mat-form-field class="book-full-width">
+    <input type="text" matInput placeholder="Quantity" name="quantity" ngModel #quantityField="ngModel">
+  </mat-form-field>
+  <mat-form-field class="book-full-width">
+    <input type="text" matInput placeholder="Author" name="author" ngModel #authorField="ngModel">
+  </mat-form-field>
 
+  <button mat-raised-button [disabled]="!bookForm.valid">Add book</button>
 </form>
