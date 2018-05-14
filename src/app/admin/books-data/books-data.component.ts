@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
-import {BookService} from '../../service/book.service'
+import { BookService } from '../../service/book.service'
 
 @Component({
   selector: 'app-books-data',
@@ -13,13 +13,15 @@ export class BooksDataComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private bookService:BookService) {
+  constructor(private bookService: BookService, private changeDetectorRef: ChangeDetectorRef) {
     let BOOKS_DATA: Book[] = bookService.getBooks();
     this.dataSource = new MatTableDataSource(BOOKS_DATA);
   }
 
   ngOnInit() {
+    debugger;
     this.dataSource.sort = this.sort;
+    this.changeDetectorRef.detectChanges();
   }
 
   applyFilter(filterValue: string) {
