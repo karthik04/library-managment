@@ -26,6 +26,7 @@ export class BooksDataComponent implements OnInit {
 
     if (JSON.stringify(this.dataSource.data) !== this.bookService.getBooksString()) {
       this.dataSource = new MatTableDataSource(this.bookService.getBooks());
+      this.dataSource.sort = this.sort;
     }
   }
 
