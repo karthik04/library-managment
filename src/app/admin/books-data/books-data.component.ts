@@ -1,5 +1,5 @@
 import { Component, OnInit, DoCheck, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatSort } from '@angular/material';
+import { MatTableDataSource, MatSort, MatSnackBar } from '@angular/material';
 import { BookService } from '../../service/book.service'
 
 @Component({
@@ -13,7 +13,7 @@ export class BooksDataComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private bookService: BookService) {
+  constructor(private bookService: BookService, public snackBar: MatSnackBar) {
     let BOOKS_DATA: Book[] = bookService.getBooks();
     this.dataSource = new MatTableDataSource(BOOKS_DATA);
   }
@@ -37,6 +37,9 @@ export class BooksDataComponent implements OnInit {
   }
   deleteBook(isbn: number) {
     this.bookService.deleteBook(isbn)
+    this.snackBar.open('Book deleted successfully', 'OK', {
+      duration: 4000,
+    });
   }
 }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {BookService} from '../../service/book.service'
+import { MatSnackBar } from '@angular/material';
+import {BookService} from '../../service/book.service';
 
 @Component({
   selector: 'app-add-book',
@@ -8,7 +9,7 @@ import {BookService} from '../../service/book.service'
 })
 export class AddBookComponent implements OnInit {
 
-  constructor(private bookService:BookService) { }
+  constructor(private bookService:BookService, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
@@ -16,7 +17,9 @@ export class AddBookComponent implements OnInit {
   submitBook(form) {
     console.log(form.value);
     this.bookService.addBook(form.value)
-    alert("Book added successfully");
+    this.snackBar.open('Book added successfully', 'OK', {
+      duration: 4000,
+    });
 
     //Reset from
     form.reset();

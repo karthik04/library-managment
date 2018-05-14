@@ -16,6 +16,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSortModule} from '@angular/material/sort';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
@@ -52,7 +53,8 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatSortModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
