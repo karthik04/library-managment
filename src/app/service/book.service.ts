@@ -25,6 +25,10 @@ export class BookService {
     return BOOKS_DATA;
   }
 
+  getBooksString(){
+    return localStorage.getItem("bo")
+  }
+
   addBook(book: Book){
     let BOOKS_DATA: Book[] = this.getBooks()
     BOOKS_DATA.push(book)

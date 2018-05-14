@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, DoCheck, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { BookService } from '../../service/book.service'
 
@@ -13,15 +13,23 @@ export class BooksDataComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private bookService: BookService, private changeDetectorRef: ChangeDetectorRef) {
+  constructor(private bookService: BookService) {
     let BOOKS_DATA: Book[] = bookService.getBooks();
     this.dataSource = new MatTableDataSource(BOOKS_DATA);
   }
 
   ngOnInit() {
-    debugger;
     this.dataSource.sort = this.sort;
-    this.changeDetectorRef.detectChanges();
+  }
+
+  ngDoCheck() {
+    
+    if (JSON.stringify(this.dataSource.data) !== this.bookService.getBooksString()) {
+      debugger;
+      this.dataSource = new MatTableDataSource(this.bookService.getBooks());
+    }
+    console.log(this.dataSource)
+    
   }
 
   applyFilter(filterValue: string) {
