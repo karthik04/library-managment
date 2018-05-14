@@ -1,15 +1,27 @@
 <form #bookForm="ngForm" (ngSubmit)="submitBook(bookForm.form);" class="book-form">
   <mat-form-field class="book-full-width">
-    <input type="text" matInput placeholder="ISBN" name="isbn" ngModel #isbnField="ngModel">
+    <input type="number" matInput placeholder="ISBN" name="isbn" ngModel #isbnField="ngModel" required minlength="3">
+    <mat-error>
+      Please enter a valid ISBN number
+    </mat-error>
   </mat-form-field>
   <mat-form-field class="book-full-width">
-    <input type="text" matInput placeholder="Name" name="name" ngModel #nameField="ngModel">
+    <input type="text" matInput placeholder="Name" name="name" ngModel #nameField="ngModel" required minlength="3">
+    <mat-error>
+        Please enter a valid Book name
+      </mat-error>
   </mat-form-field>
   <mat-form-field class="book-full-width">
-    <input type="text" matInput placeholder="Quantity" name="quantity" ngModel #quantityField="ngModel">
+    <input type="number" matInput placeholder="Quantity" name="quantity" ngModel #quantityField="ngModel" required>
+    <mat-error>
+        Please enter a valid Quantity
+      </mat-error>
   </mat-form-field>
   <mat-form-field class="book-full-width">
-    <input type="text" matInput placeholder="Author" name="author" ngModel #authorField="ngModel">
+    <input type="text" matInput placeholder="Author" name="author" ngModel #authorField="ngModel" required minlength="3">
+    <mat-error>
+        Please enter a valid Author name
+      </mat-error>
   </mat-form-field>
 
   <button mat-raised-button [disabled]="!bookForm.valid">Add book</button>

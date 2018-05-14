@@ -24,8 +24,19 @@ export class BookService {
         { isbn: 5, name: 'Boron', quantity: 1, author: 'B' },
         { isbn: 6, name: 'Carbon', quantity: 17, author: 'C' }
       ];
-      localStorage.setItem("bo", JSON.stringify(BOOKS_DATA));
+      this.setBooks(BOOKS_DATA)
     }
     return BOOKS_DATA;
+  }
+
+  addBook(book: Book){
+    debugger;
+    let BOOKS_DATA: Book[] = this.getBooks()
+    BOOKS_DATA.push(book)
+    this.setBooks(BOOKS_DATA)
+  }
+
+  setBooks(books: Book[]){
+    localStorage.setItem("bo", JSON.stringify(books));
   }
 }
