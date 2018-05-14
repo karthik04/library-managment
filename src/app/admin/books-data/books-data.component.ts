@@ -25,7 +25,6 @@ export class BooksDataComponent implements OnInit {
   ngDoCheck() {
     
     if (JSON.stringify(this.dataSource.data) !== this.bookService.getBooksString()) {
-      debugger;
       this.dataSource = new MatTableDataSource(this.bookService.getBooks());
     }
     console.log(this.dataSource)
