@@ -8,7 +8,7 @@ import { BookService } from '../../service/book.service'
   styleUrls: ['./books-data.component.scss']
 })
 export class BooksDataComponent implements OnInit {
-  displayedColumns = ['isbn', 'name', 'quantity', 'author'];
+  displayedColumns = ['isbn', 'name', 'quantity', 'author', 'delete'];
   dataSource;
 
   @ViewChild(MatSort) sort: MatSort;
@@ -23,18 +23,19 @@ export class BooksDataComponent implements OnInit {
   }
 
   ngDoCheck() {
-    
+
     if (JSON.stringify(this.dataSource.data) !== this.bookService.getBooksString()) {
       this.dataSource = new MatTableDataSource(this.bookService.getBooks());
     }
-    console.log(this.dataSource)
-    
   }
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
+  }
+  deleteBook(isbn: number) {
+    this.bookService.deleteBook(isbn)
   }
 }
 
