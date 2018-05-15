@@ -39,10 +39,15 @@ export class BookService {
     return _.filter(allBooks, ['user', 0])
   }
 
-  addBook(book: Book) {
+  addBook(book: Book): boolean {
     let BOOKS_DATA: Book[] = this.getBooks()
-    BOOKS_DATA.push(book)
-    this.setBooks(BOOKS_DATA)
+    if (_.findIndex(BOOKS_DATA, ['isbn', book.isbn]) === -1) {
+      BOOKS_DATA.push(book)
+      this.setBooks(BOOKS_DATA)
+      return true
+    } else {
+      return false
+    }
   }
 
   setBooks(books: Book[]) {
@@ -66,11 +71,16 @@ export class BookService {
     this.admin = val
   }
 
-  issueBook(isbn: number, uid: number) {
+  issueBook(isbn: number, uid: number): boolean {
     let BOOKS_DATA: Book[] = this.getBooks()
-    const bookIndex = _.findIndex(BOOKS_DATA,['isbn', isbn])
-    BOOKS_DATA[bookIndex].user=uid;
-    this.setBooks(BOOKS_DATA)
+    const bookIndex = _.findIndex(BOOKS_DATA, ['isbn', isbn])
+    if (BOOKS_DATA[bookIndex].user !== uid) {
+      BOOKS_DATA[bookIndex].user = uid;
+      this.setBooks(BOOKS_DATA)
+      return true
+    } else {
+      return false
+    }
   }
 
 }

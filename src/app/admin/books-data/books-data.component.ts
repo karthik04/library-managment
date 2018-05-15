@@ -10,7 +10,7 @@ import { BookService } from '../../service/book.service'
 export class BooksDataComponent implements OnInit {
   displayedColumns = ['isbn', 'name', 'quantity', 'author', 'delete', 'issue'];
   dataSource;
-  guestUserId:number=0;
+  guestUserId: number = 0;
 
   @ViewChild(MatSort) sort: MatSort;
 
@@ -48,10 +48,16 @@ export class BooksDataComponent implements OnInit {
     });
   }
   issueBook(isbn: number) {
-    this.bookService.issueBook(isbn,this.guestUserId)
-    this.snackBar.open('Book successfully issue to you', 'OK', {
-      duration: 4000,
-    });
+    if (this.bookService.issueBook(isbn, this.guestUserId)) {
+      this.snackBar.open('Book successfully issue to you', 'OK', {
+        duration: 4000,
+      });
+    } else{
+      this.snackBar.open('Book already added', 'OK', {
+        duration: 4000,
+      });
+    }
+
   }
 }
 

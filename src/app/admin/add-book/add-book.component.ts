@@ -16,10 +16,16 @@ export class AddBookComponent implements OnInit {
 
   submitBook(form) {
     console.log(form.value);
-    this.bookService.addBook(form.value)
-    this.snackBar.open('Book added successfully', 'OK', {
-      duration: 4000,
-    });
+    if(this.bookService.addBook(form.value)){
+      this.snackBar.open('Book added successfully', 'OK', {
+        duration: 4000,
+      });
+    } else{
+      this.snackBar.open('ISBN already exists', 'OK', {
+        duration: 4000,
+      });
+    }
+
 
     //Reset from
     form.reset();
