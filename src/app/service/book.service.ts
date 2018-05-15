@@ -20,10 +20,13 @@ export class BookService {
     } else {
       // Initial data
       BOOKS_DATA = [
-        { isbn: 1, name: 'Hydrogen', quantity: 9, author: 'H', user: 0 },
-        { isbn: 2, name: 'Helium', quantity: 6, author: 'He' },
-        { isbn: 3, name: 'Hydrogen', quantity: 9, author: 'H', user: 0 },
-        { isbn: 4, name: 'Helium', quantity: 6, author: 'He' }
+        { isbn: 4938497, name: 'War and Peace', quantity: 90, author: 'Stefan', user: 0 },
+        { isbn: 4323254, name: 'Great Books', quantity: 60, author: 'Michale' },
+        { isbn: 3678741, name: 'Best Books Ever', quantity: 56, author: 'Kittler' },
+        { isbn: 5564534, name: 'The Graphic Canon', quantity: 26, author: 'Susanne' },
+        { isbn: 4863594, name: '100 Life-Changing Books', quantity: 61, author: 'Andreas', user: 0 },
+        { isbn: 9483958, name: 'How to Read Literature', quantity: 10, author: 'Thomas C. Foster' },
+        { isbn: 3642424, name: '100 Greatest Books', quantity: 96, author: 'Easton', user: 0 }
       ];
       this.setBooks(BOOKS_DATA);
     }
