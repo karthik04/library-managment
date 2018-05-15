@@ -66,4 +66,11 @@ export class BookService {
     this.admin = val
   }
 
+  issueBook(isbn: number, uid: number) {
+    let BOOKS_DATA: Book[] = this.getBooks()
+    const bookIndex = _.findIndex(BOOKS_DATA,['isbn', isbn])
+    BOOKS_DATA[bookIndex].user=uid;
+    this.setBooks(BOOKS_DATA)
+  }
+
 }
