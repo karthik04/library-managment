@@ -8,12 +8,17 @@ import { BookService } from '../../service/book.service'
   styleUrls: ['./books-data.component.scss']
 })
 export class BooksDataComponent implements OnInit {
-  displayedColumns = ['isbn', 'name', 'quantity', 'author', 'delete'];
+  displayedColumns = ['isbn', 'name', 'quantity', 'author', 'delete', 'issue'];
   dataSource;
 
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private bookService: BookService, public snackBar: MatSnackBar) {
+    if (bookService.isAdmin()) {
+      this.displayedColumns = ['isbn', 'name', 'quantity', 'author', 'delete'];
+    } else {
+      this.displayedColumns = ['isbn', 'name', 'quantity', 'author', 'issue'];
+    }
     let BOOKS_DATA: Book[] = bookService.getBooks();
     this.dataSource = new MatTableDataSource(BOOKS_DATA);
   }
@@ -41,6 +46,13 @@ export class BooksDataComponent implements OnInit {
       duration: 4000,
     });
   }
+  issueBook(isbn: number) {
+    // this.bookService.issueBook(isbn,0)
+    //TODO: write logic for issue book. send isbn and user id
+    this.snackBar.open('Book successfully issue to you', 'OK', {
+      duration: 4000,
+    });
+  }
 }
 
 
@@ -50,6 +62,7 @@ export interface Book {
   isbn: number;
   quantity: number;
   author: string;
+  user?: number;
 }
 
 

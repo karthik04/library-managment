@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BookService } from '../service/book.service'
 
 @Component({
   selector: 'app-user',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private bookService: BookService) { 
+    bookService.setAdmin(false)
+  }
 
   ngOnInit() {
   }

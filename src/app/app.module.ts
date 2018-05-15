@@ -26,7 +26,8 @@ import { BooksDataComponent } from './admin/books-data/books-data.component';
 import {BookService} from './service/book.service';
 import { AddBookComponent } from './admin/add-book/add-book.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
+import { MyBooksComponent } from './user/my-books/my-books.component'; 
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     PageNotFoundComponent,
     BooksDataComponent,
-    AddBookComponent
+    AddBookComponent,
+    MyBooksComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,8 @@ import * as _ from "lodash";
 
 export class BookService {
 
+  admin: boolean;
+
   constructor() { }
 
   getBooks(): Book[] {
@@ -18,9 +20,9 @@ export class BookService {
     } else {
       // Initial data
       BOOKS_DATA = [
-        { isbn: 1, name: 'Hydrogen', quantity: 9, author: 'H' },
+        { isbn: 1, name: 'Hydrogen', quantity: 9, author: 'H', user: 0 },
         { isbn: 2, name: 'Helium', quantity: 6, author: 'He' },
-        { isbn: 3, name: 'Hydrogen', quantity: 9, author: 'H' },
+        { isbn: 3, name: 'Hydrogen', quantity: 9, author: 'H', user: 0 },
         { isbn: 4, name: 'Helium', quantity: 6, author: 'He' }
       ];
       this.setBooks(BOOKS_DATA)
@@ -51,4 +53,12 @@ export class BookService {
 
     this.setBooks(updatedBooks)
   }
+
+  isAdmin(): boolean {
+    return this.admin;
+  }
+  setAdmin(val: boolean) {
+    this.admin = val
+  }
+
 }
