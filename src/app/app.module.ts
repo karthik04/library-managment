@@ -17,6 +17,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
@@ -27,7 +28,8 @@ import {BookService} from './service/book.service';
 import { AddBookComponent } from './admin/add-book/add-book.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { MyBooksComponent } from './user/my-books/my-books.component'; 
+import { MyBooksComponent } from './user/my-books/my-books.component';
+import { ProfileComponent } from './user/profile/profile.component'; 
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { MyBooksComponent } from './user/my-books/my-books.component';
     PageNotFoundComponent,
     BooksDataComponent,
     AddBookComponent,
-    MyBooksComponent
+    MyBooksComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ import { MyBooksComponent } from './user/my-books/my-books.component';
     MatSortModule,
     ReactiveFormsModule,
     FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

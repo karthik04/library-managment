@@ -24,7 +24,7 @@
       <th mat-header-cell *matHeaderCellDef> Return book </th>
       <td mat-cell *matCellDef="let book">
         <div class="pointer">
-          <a (click)="returnBook(book.isbn,book.user)">
+          <a (click)="returnBook(book.isbn,book.user)"  matTooltip="Return Book" matTooltipShowDelay="1000">
             <mat-icon>assignment_return </mat-icon>
           </a>
         </div>
