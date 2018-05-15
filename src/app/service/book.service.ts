@@ -83,4 +83,11 @@ export class BookService {
     }
   }
 
+  returnBook(isbn: number, uid: number) {
+    let BOOKS_DATA: Book[] = this.getBooks()
+    const bookIndex = _.findIndex(BOOKS_DATA, ['isbn', isbn])
+    BOOKS_DATA[bookIndex].user = -1;
+    this.setBooks(BOOKS_DATA)
+  }
+
 }
