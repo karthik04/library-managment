@@ -34,6 +34,11 @@ export class BookService {
     return localStorage.getItem("bo")
   }
 
+  getUserBooks(uid: number) {
+    let allBooks: Book[] = this.getBooks();
+    return _.filter(allBooks, ['user', 0])
+  }
+
   addBook(book: Book) {
     let BOOKS_DATA: Book[] = this.getBooks()
     BOOKS_DATA.push(book)
