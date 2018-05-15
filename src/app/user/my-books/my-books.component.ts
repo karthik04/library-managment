@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { BookService } from '../../service/book.service'
-import { Book } from '../../admin/books-data/books-data.component'
+import { Component, OnInit, DoCheck } from '@angular/core';
+import { BookService } from '../../service/book.service';
+import { Book } from '../../admin/books-data/books-data.component';
 import { MatTableDataSource, MatSnackBar } from '@angular/material';
 
 
@@ -9,13 +9,13 @@ import { MatTableDataSource, MatSnackBar } from '@angular/material';
   templateUrl: './my-books.component.html',
   styleUrls: ['./my-books.component.scss']
 })
-export class MyBooksComponent implements OnInit {
+export class MyBooksComponent implements OnInit, DoCheck {
   displayedColumns = ['isbn', 'name', 'author', 'return'];
   dataSource;
-  guestUserId: number = 0;
+  guestUserId = 0;
 
   constructor(private bookService: BookService, public snackBar: MatSnackBar) {
-    let BOOKS_DATA: Book[] = bookService.getUserBooks(this.guestUserId);
+    const BOOKS_DATA: Book[] = bookService.getUserBooks(this.guestUserId);
     this.dataSource = new MatTableDataSource(BOOKS_DATA);
   }
 
@@ -30,7 +30,7 @@ export class MyBooksComponent implements OnInit {
   }
 
   returnBook(isbn: number, uid: number) {
-    this.bookService.returnBook(isbn, uid)
+    this.bookService.returnBook(isbn, uid);
     this.snackBar.open('Book returned successfully', 'OK', {
       duration: 4000,
     });

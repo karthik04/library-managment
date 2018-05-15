@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BookService } from '../service/book.service'
+import { BookService } from '../service/book.service';
 
 @Component({
   selector: 'app-admin',
@@ -8,8 +8,8 @@ import { BookService } from '../service/book.service'
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private bookService: BookService) { 
-    bookService.setAdmin(true)
+  constructor(private bookService: BookService) {
+    bookService.setAdmin(true);
   }
 
   ngOnInit() {

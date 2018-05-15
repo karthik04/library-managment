@@ -1,16 +1,16 @@
 import { Component, OnInit, DoCheck, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, MatSnackBar } from '@angular/material';
-import { BookService } from '../../service/book.service'
+import { BookService } from '../../service/book.service';
 
 @Component({
   selector: 'app-books-data',
   templateUrl: './books-data.component.html',
   styleUrls: ['./books-data.component.scss']
 })
-export class BooksDataComponent implements OnInit {
+export class BooksDataComponent implements OnInit, DoCheck {
   displayedColumns = ['isbn', 'name', 'quantity', 'author', 'delete', 'issue'];
   dataSource;
-  guestUserId: number = 0;
+  guestUserId = 0;
 
   @ViewChild(MatSort) sort: MatSort;
 
@@ -20,7 +20,7 @@ export class BooksDataComponent implements OnInit {
     } else {
       this.displayedColumns = ['isbn', 'name', 'quantity', 'author', 'issue'];
     }
-    let BOOKS_DATA: Book[] = bookService.getBooks();
+    const BOOKS_DATA: Book[] = bookService.getBooks();
     this.dataSource = new MatTableDataSource(BOOKS_DATA);
   }
 
@@ -42,7 +42,7 @@ export class BooksDataComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
   deleteBook(isbn: number) {
-    this.bookService.deleteBook(isbn)
+    this.bookService.deleteBook(isbn);
     this.snackBar.open('Book deleted successfully', 'OK', {
       duration: 4000,
     });
@@ -52,7 +52,7 @@ export class BooksDataComponent implements OnInit {
       this.snackBar.open('Book successfully issue to you', 'OK', {
         duration: 4000,
       });
-    } else{
+    } else {
       this.snackBar.open('Book already added', 'OK', {
         duration: 4000,
       });

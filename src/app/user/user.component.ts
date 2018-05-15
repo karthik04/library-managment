@@ -8,8 +8,8 @@ import { BookService } from '../service/book.service'
 })
 export class UserComponent implements OnInit {
 
-  constructor(private bookService: BookService) { 
-    bookService.setAdmin(false)
+  constructor(private bookService: BookService) {
+    bookService.setAdmin(false);
   }
 
   ngOnInit() {

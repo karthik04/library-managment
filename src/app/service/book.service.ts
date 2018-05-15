@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Book } from '../admin/books-data/books-data.component'
-import * as _ from "lodash";
+import { Book } from '../admin/books-data/books-data.component';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +15,8 @@ export class BookService {
   getBooks(): Book[] {
     let BOOKS_DATA: Book[];
 
-    if (localStorage.getItem("bo")) {
-      BOOKS_DATA = JSON.parse(localStorage.getItem("bo"));
+    if (localStorage.getItem('bo')) {
+      BOOKS_DATA = JSON.parse(localStorage.getItem('bo'));
     } else {
       // Initial data
       BOOKS_DATA = [
@@ -25,69 +25,69 @@ export class BookService {
         { isbn: 3, name: 'Hydrogen', quantity: 9, author: 'H', user: 0 },
         { isbn: 4, name: 'Helium', quantity: 6, author: 'He' }
       ];
-      this.setBooks(BOOKS_DATA)
+      this.setBooks(BOOKS_DATA);
     }
     return BOOKS_DATA;
   }
 
   getBooksString() {
-    return localStorage.getItem("bo")
+    return localStorage.getItem('bo');
   }
 
   getUserBooks(uid: number) {
-    let allBooks: Book[] = this.getBooks();
-    return _.filter(allBooks, ['user', 0])
+    const allBooks: Book[] = this.getBooks();
+    return _.filter(allBooks, ['user', 0]);
   }
 
   addBook(book: Book): boolean {
-    let BOOKS_DATA: Book[] = this.getBooks()
+    const BOOKS_DATA: Book[] = this.getBooks();
     if (_.findIndex(BOOKS_DATA, ['isbn', book.isbn]) === -1) {
-      BOOKS_DATA.push(book)
-      this.setBooks(BOOKS_DATA)
-      return true
+      BOOKS_DATA.push(book);
+      this.setBooks(BOOKS_DATA);
+      return true;
     } else {
-      return false
+      return false;
     }
   }
 
   setBooks(books: Book[]) {
-    localStorage.setItem("bo", JSON.stringify(books));
+    localStorage.setItem('bo', JSON.stringify(books));
   }
 
   deleteBook(isbn: number) {
-    let updatedBooks: Book[] = this.getBooks();
+    const updatedBooks: Book[] = this.getBooks();
 
     _.remove(updatedBooks, function (book) {
       return book.isbn === isbn;
     });
 
-    this.setBooks(updatedBooks)
+    this.setBooks(updatedBooks);
   }
 
   isAdmin(): boolean {
     return this.admin;
   }
   setAdmin(val: boolean) {
-    this.admin = val
+    this.admin = val;
   }
 
   issueBook(isbn: number, uid: number): boolean {
-    let BOOKS_DATA: Book[] = this.getBooks()
-    const bookIndex = _.findIndex(BOOKS_DATA, ['isbn', isbn])
+    const BOOKS_DATA: Book[] = this.getBooks();
+    const bookIndex = _.findIndex(BOOKS_DATA, ['isbn', isbn]);
     if (BOOKS_DATA[bookIndex].user !== uid) {
       BOOKS_DATA[bookIndex].user = uid;
-      this.setBooks(BOOKS_DATA)
-      return true
+      this.setBooks(BOOKS_DATA);
+      return true;
     } else {
-      return false
+      return false;
     }
   }
 
   returnBook(isbn: number, uid: number) {
-    let BOOKS_DATA: Book[] = this.getBooks()
-    const bookIndex = _.findIndex(BOOKS_DATA, ['isbn', isbn])
+    const BOOKS_DATA: Book[] = this.getBooks();
+    const bookIndex = _.findIndex(BOOKS_DATA, ['isbn', isbn]);
     BOOKS_DATA[bookIndex].user = -1;
-    this.setBooks(BOOKS_DATA)
+    this.setBooks(BOOKS_DATA);
   }
 
 }
